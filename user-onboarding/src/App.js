@@ -24,6 +24,34 @@ function App() {
   const [users, setUsers] = useState(initialUsers)
   const [formValues, setFormValues] = useState(initialFormValues)
   
+  const url = 'https://reqres.in/api/users'
+  
+  const getUsers = () => {
+    axios.get(url)
+    .then(res =>{
+      debugger
+      setUsers(res.data)
+    })
+    .catch(err =>{
+      debugger
+      console.log('getUsers error', err)
+    })
+  }
+
+  const postNewUser = newUser =>{
+    axios.post(url, newUser)
+    .then(res =>{
+      setUsers([...users, res.data])
+    })
+    .catch(err =>{
+      debugger
+      console.log('postNewUser error', err)
+    })
+    .finally(() =>{
+      setFormValues(initialFormValues)
+    })
+  }
+
   const onInputChange = evt => {
 
   }
