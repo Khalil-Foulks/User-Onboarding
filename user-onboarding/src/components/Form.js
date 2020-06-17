@@ -5,9 +5,8 @@ export default function Form(props){
     const { onInputChange, values} = props
 
     return(
-      <div className='form container'>
-          <form className='form-group inputs'>
-            <div>
+          <form className='form container'>
+            <div className='form-group inputs'>
                 <h4>General Info</h4>
 
                 {/* ////////// TEXT INPUTS ////////// */}
@@ -48,7 +47,9 @@ export default function Form(props){
                     />
                 </label>
             </div>
+            <div className='form-group submit'>
+                <button>Submit</button>
+            </div>
           </form>
-      </div>
     )
 }
