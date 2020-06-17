@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Form from './components/Form'
 
@@ -18,11 +18,21 @@ const initialFormValues = {
 
 }
 
+const initialFormErrors = {
+  name: '',
+  email: '',
+  password: '',
+  terms:false,
+}
+
 const initialUsers = []
+const initialDisabled = true
 
 function App() {
   const [users, setUsers] = useState(initialUsers)
   const [formValues, setFormValues] = useState(initialFormValues)
+  const [disabled, setDisabled] = useState(initialDisabled)
+  const [formErrors, setFormErrors] = useState(initialFormErrors)
   
   const url = 'https://reqres.in/api/users'
   
@@ -53,14 +63,79 @@ function App() {
   }
 
   const onInputChange = evt => {
+    const name = evt.target.name
+    const value = evt.target.value
 
+    yup
+    .reach(formSchema, name)
+    .validate(value)
+    .then(valid =>{
+      setFormErrors({
+        ...formErrors,
+        [name]: ""
+      });
+    })
+
+    setFormValues({
+      ...formValues,
+      [name]:value,
+    })
   }
 
+  const onCheckboxChange = evt => {
+    const { name, checked } =evt.target
 
+    setFormValues({
+      ...formValues, 
+      [name]:checked,
+    })
+  }
+
+  const onSubmit = evt => {
+    evt.preventDefault()
+
+    const newUser = {
+      name:formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
+      terms: formValues.terms,
+    }
+    postNewUser(newUser)
+  }
+
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  useEffect(() => {
+    formSchema.isValid(formValues).then(valid => {
+      setDisabled(!valid);
+    });
+  }, [formValues])
 
   return (
     <div className="App">
-      <Form onInputChange={onInputChange} values = {formValues} />
+      <header><h1>User Onboarding App</h1></header>
+
+      <Form 
+      onInputChange={onInputChange} 
+      values = {formValues} 
+      onCheckboxChange={onCheckboxChange} 
+      onSubmit={onSubmit} 
+      disabled={disabled}
+      />
+
+      {
+        users.map(user =>{
+          return (
+            <div className='user container'> 
+              <h2>{user.name}</h2>
+              <p>Email: {user.email}</p>
+              <p>Password: {user.password}</p>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }

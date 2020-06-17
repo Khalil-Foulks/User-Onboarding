@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Form(props){
     
-    const { onInputChange, values} = props
+    const { onInputChange, values, onCheckboxChange, onSubmit, disabled } = props
 
     return(
-          <form className='form container'>
+          <form className='form container' onSubmit={onSubmit}>
             <div className='form-group inputs'>
                 <h4>General Info</h4>
 
@@ -42,13 +42,13 @@ export default function Form(props){
                     <input
                         name='terms'
                         checked={values.terms}
-                        onChange={onInputChange}
+                        onChange={onCheckboxChange}
                         type='checkbox'
                     />
                 </label>
             </div>
             <div className='form-group submit'>
-                <button>Submit</button>
+                <button disabled={disabled}>Submit</button>
             </div>
           </form>
     )
