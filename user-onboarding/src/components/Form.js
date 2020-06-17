@@ -14,7 +14,7 @@ export default function Form(props){
                 <label>Name&nbsp;
                     <input
                         name= 'name' 
-                        value={values}
+                        value={values.name}
                         onChange={onInputChange}
                         type='text'
                     />
@@ -23,7 +23,7 @@ export default function Form(props){
                 <label>Email&nbsp;
                     <input
                         name='email'
-                        value={values}
+                        value={values.email}
                         onChange={onInputChange}
                         type='text'
                     />
@@ -32,7 +32,7 @@ export default function Form(props){
                 <label>Password&nbsp;
                     <input
                         name='password'
-                        value={values}
+                        value={values.password}
                         onChange={onInputChange}
                         type='text'
                     />
@@ -42,7 +42,7 @@ export default function Form(props){
                 <label>Terms&nbsp;
                     <input
                         name='terms'
-                        checked={values}
+                        checked={values.terms}
                         onChange={onInputChange}
                         type='checkbox'
                     />

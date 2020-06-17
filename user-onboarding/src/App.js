@@ -11,7 +11,7 @@ const initialFormValues = {
   password: '',
 
   ////////// CHECKBOX INPUTS ////////
-  terms:false
+  terms:false,
 
 }
 
