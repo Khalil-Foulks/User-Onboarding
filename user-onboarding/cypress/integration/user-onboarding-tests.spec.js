@@ -1,4 +1,4 @@
-describe('Tests inputs', () =>{
+describe('Tests inputs and submits', () =>{
     it('can navigate to site', () =>{
         cy.visit('http://localhost:3000/')
     })
@@ -50,5 +50,9 @@ describe('Tests inputs', () =>{
 
     it('submit button should be DISABLED', () =>{
         cy.get('button').should('not.be.disabled')
+    })
+
+    it('can submit a NEW user', ()=>{
+        cy.get('button#submit').click()
     })
 })
