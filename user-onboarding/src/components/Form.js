@@ -18,7 +18,7 @@ export default function Form(props){
                     <div>{errors.terms}</div>
                 </div>
                 
-                <label>First Name&nbsp;
+                <label id='first_name'>First Name&nbsp;
                     <input
                         name= 'first_name' 
                         value={values.first_name}
@@ -27,7 +27,7 @@ export default function Form(props){
                     />
                 </label>
                 
-                <label>Last Name&nbsp;
+                <label id='last_name'>Last Name&nbsp;
                     <input
                         name= 'last_name' 
                         value={values.last_name}
@@ -36,7 +36,7 @@ export default function Form(props){
                     />
                 </label>
                 
-                <label>Email&nbsp;
+                <label id='email'>Email&nbsp;
                     <input
                         name='email'
                         value={values.email}
@@ -45,7 +45,7 @@ export default function Form(props){
                     />
                 </label>
 
-                <label>Password&nbsp;
+                <label id='password'>Password&nbsp;
                     <input
                         name='password'
                         value={values.password}
@@ -55,7 +55,7 @@ export default function Form(props){
                 </label>
                 
                 {/* ////////// CHECKBOX INPUTS ////////// */}
-                <label>Terms&nbsp;
+                <label id='terms'>Terms&nbsp;
                     <input
                         name='terms'
                         checked={values.terms}
