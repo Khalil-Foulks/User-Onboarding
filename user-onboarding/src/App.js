@@ -59,7 +59,6 @@ function App() {
     })
     .catch(err =>{
       debugger
-      console.log('postNewUser error', err)
     })
     .finally(() =>{
       setFormValues(initialFormValues)
@@ -79,6 +78,12 @@ function App() {
         [name]: ""
       });
     })
+    .catch(err => {
+      setFormErrors({
+        ...formErrors,
+        [name]: err.errors[0]
+      });
+    });
 
     setFormValues({
       ...formValues,
@@ -133,8 +138,9 @@ function App() {
       {
         users.map(user =>{
           return (
-            <User key={user.id} user={user} />
+            <User key={user.id} user={user}/>
           )
+          console.log(user)
         })
       }
     </div>
