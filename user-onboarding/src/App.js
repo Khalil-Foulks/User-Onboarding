@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Form from './components/Form'
+import User from './components/User'
 
 import formSchema from './validation/formSchema'
 import axios from 'axios'
@@ -132,11 +133,7 @@ function App() {
       {
         users.map(user =>{
           return (
-            <div className='user container'> 
-              <h2>{user.first_name} {user.last_name} </h2>
-              <p>Email: {user.email}</p>
-              <p>Password: {user.password}</p>
-            </div>
+            <User key={user.id} user={user} />
           )
         })
       }
