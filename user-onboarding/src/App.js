@@ -55,7 +55,7 @@ function App() {
   const postNewUser = newUser =>{
     axios.post(url, newUser)
     .then(res =>{
-      setUsers([...users, res.data.data])
+      setUsers([...users, res.data])
     })
     .catch(err =>{
       debugger
@@ -141,7 +141,7 @@ function App() {
           return (
             <User key={user.id} details={user}/>
           )
-          console.log(user)
+           //console.log(user)
         })
       }
     </div>
