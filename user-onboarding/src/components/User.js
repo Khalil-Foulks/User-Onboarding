@@ -1,12 +1,12 @@
 import React from 'react'
 
 export default function User(props) {
-  const { user } = props
+  const { details } = props
     return (
         <div className='user container'> 
-          <h2>{user.first_name} {user.last_name} </h2>
-          <p>Email: {user.email}</p>
-          <p>Password: {user.password}</p>
+          <h2>{details.first_name} {details.last_name} </h2>
+          <p>Email: {details.email}</p>
+          <p>Password: {details.password}</p>
         </div>
     )
 }

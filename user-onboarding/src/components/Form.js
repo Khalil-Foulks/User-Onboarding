@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Form(props){
     
-    const { onInputChange, values, onCheckboxChange, onSubmit, disabled } = props
+    const { onInputChange, values, onCheckboxChange, onSubmit, disabled, errors } = props
 
     return(
           <form className='form container' onSubmit={onSubmit}>
@@ -10,6 +10,14 @@ export default function Form(props){
                 <h4>General Info</h4>
 
                 {/* ////////// TEXT INPUTS ////////// */}
+                <div className='errors'>
+                    <div>{errors.first_name}</div>
+                    <div>{errors.last_name}</div>
+                    <div>{errors.email}</div>
+                    <div>{errors.password}</div>
+                    <div>{errors.terms}</div>
+                </div>
+                
                 <label>First Name&nbsp;
                     <input
                         name= 'first_name' 

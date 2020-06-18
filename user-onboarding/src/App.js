@@ -133,12 +133,13 @@ function App() {
       onCheckboxChange={onCheckboxChange} 
       onSubmit={onSubmit} 
       disabled={disabled}
+      errors={formErrors}
       />
 
       {
         users.map(user =>{
           return (
-            <User key={user.id} user={user}/>
+            <User key={user.id} details={user}/>
           )
           console.log(user)
         })
