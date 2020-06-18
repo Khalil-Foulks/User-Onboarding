@@ -9,7 +9,8 @@ import * as yup from 'yup'
 
 const initialFormValues = {
   ////////// TEXT INPUTS //////////
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
 
@@ -19,7 +20,8 @@ const initialFormValues = {
 }
 
 const initialFormErrors = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   terms:false,
@@ -39,8 +41,9 @@ function App() {
   const getUsers = () => {
     axios.get(url)
     .then(res =>{
-      debugger
-      setUsers(res.data)
+      //debugger
+      console.log(res)
+      setUsers(res.data.data)
     })
     .catch(err =>{
       debugger
@@ -51,7 +54,7 @@ function App() {
   const postNewUser = newUser =>{
     axios.post(url, newUser)
     .then(res =>{
-      setUsers([...users, res.data])
+      setUsers([...users, res.data.data])
     })
     .catch(err =>{
       debugger
@@ -95,7 +98,8 @@ function App() {
     evt.preventDefault()
 
     const newUser = {
-      name:formValues.name.trim(),
+      first_name:formValues.first_name.trim(),
+      last_name:formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
       terms: formValues.terms,
@@ -129,7 +133,7 @@ function App() {
         users.map(user =>{
           return (
             <div className='user container'> 
-              <h2>{user.name}</h2>
+              <h2>{user.first_name} {user.last_name} </h2>
               <p>Email: {user.email}</p>
               <p>Password: {user.password}</p>
             </div>

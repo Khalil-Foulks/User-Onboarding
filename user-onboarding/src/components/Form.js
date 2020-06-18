@@ -10,10 +10,19 @@ export default function Form(props){
                 <h4>General Info</h4>
 
                 {/* ////////// TEXT INPUTS ////////// */}
-                <label>Name&nbsp;
+                <label>First Name&nbsp;
                     <input
-                        name= 'name' 
-                        value={values.name}
+                        name= 'first_name' 
+                        value={values.first_name}
+                        onChange={onInputChange}
+                        type='text'
+                    />
+                </label>
+                
+                <label>Last Name&nbsp;
+                    <input
+                        name= 'last_name' 
+                        value={values.last_name}
                         onChange={onInputChange}
                         type='text'
                     />
